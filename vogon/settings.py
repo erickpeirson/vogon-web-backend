@@ -138,6 +138,10 @@ WSGI_APPLICATION = "vogon.wsgi.application"
 DATABASES = {"default": dj_database_url.config()}
 DATABASES["default"]["ENGINE"] = "django.db.backends.postgresql_psycopg2"
 
+AUTHENTICATION_BACKENDS = (
+	"django.contrib.auth.backends.ModelBackend",
+)
+
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 ANONYMOUS_USER_ID = -1
 BASE_URL = os.environ.get('BASE_URL', "/")

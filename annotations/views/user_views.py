@@ -237,14 +237,9 @@ class UserViewSet(viewsets.ModelViewSet):
 @api_view(["POST"])
 @authentication_classes([])
 @permission_classes([AllowAny])
-def create_user(request):
+def create(request):
 	try:
-		username = request.data['username']
-		email = request.data['email']
-		full_name = request.data['full_name']
-		affiliation = request.data['affiliation']
-		
-		user = VogonUser.objects.create_user(username, email, full_name, affiliation)
+		user = VogonUser.objects.create_user(**request.data)
 		user.save()
 		refresh = RefreshToken.for_user(user)
 		return Response({

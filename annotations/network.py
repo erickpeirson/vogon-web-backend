@@ -8,7 +8,6 @@ def network_data(relationsets, text_id=None, appellation_queryset=None):
     """
     if appellation_queryset is None:
         appellation_queryset = Appellation.objects.all()
-
     nodes = {}
     edges = Counter()
     fields = [
