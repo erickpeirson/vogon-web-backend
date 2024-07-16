@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.11.9
 
 WORKDIR /usr/src/app
 
@@ -9,6 +9,7 @@ RUN mkdir data
 
 RUN apt-get update && apt-get upgrade -y && apt-get autoremove && apt-get autoclean
 # most of these are for lxml which needs a bunch of dependancies installed
+RUN apt-get install elpa-magit -y
 RUN apt-get install -y \
     libffi-dev \
     libssl-dev \
